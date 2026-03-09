@@ -16,10 +16,10 @@ class SnakeGame(QWidget):
         self.frame_color_value = 0
         self.timer = QTimer()
         self.timer.timeout.connect(self.update_game)
-        self.play_area = QRect()  # 🔲 caja central del juego
+        self.play_area = QRect()  #  caja central del juego
         self.init_ui()
         self.reset_game()
-        self.awaiting_start = False
+        self.awaiting_start = True
 
 
     def init_ui(self):
@@ -59,6 +59,12 @@ class SnakeGame(QWidget):
             }
         """)
         self.difficulty_box.currentIndexChanged.connect(self.change_difficulty)
+        self.difficulty_box.setFocusPolicy(Qt.NoFocus)
+        for w in [self.btn_restart, self.btn_pause, self.btn_back, self.difficulty_box]:
+            w.setFocusPolicy(Qt.NoFocus)
+
+
+
 
         # Layout superior
         top_layout = QHBoxLayout()
@@ -99,18 +105,29 @@ class SnakeGame(QWidget):
         self.score = 0
         self.game_over = False
         self.paused = False
-        self.speed = 120
-        self.change_difficulty()
 
-    # Crear comida solo si el área ya existe
-        if hasattr(self, "play_area") and self.play_area.width() > 0:
+    # Mantener la dificultad ya seleccionada
+        level = self.difficulty_box.currentText()
+        if level == "FÁCIL":
+            self.speed = 150
+        elif level == "NORMAL":
+            self.speed = 100
+        else:
+            self.speed = 70
+
+        self.timer.stop()
+        self.awaiting_start = True
+
+    # Comida
+        if self.play_area.width() > 0:
             self.spawn_food()
         else:
-            self.food = None  # se generará más tarde
+            self.food = None
 
-        self.timer.stop()  # ⏸ No arranca automáticamente
-        self.awaiting_start = True  # Espera a que el jugador se mueva
         self.update()
+        QTimer.singleShot(0, lambda: self.setFocus(Qt.TabFocusReason))
+
+
 
     def change_difficulty(self):
         level = self.difficulty_box.currentText()
@@ -120,8 +137,9 @@ class SnakeGame(QWidget):
             self.speed = 100
         else:
             self.speed = 70
-        if not self.paused:
+        if not self.awaiting_start and not self.paused:
             self.timer.start(self.speed)
+
 
     def toggle_pause(self):
         if self.paused:
@@ -152,21 +170,43 @@ class SnakeGame(QWidget):
     def keyPressEvent(self, event):
         if self.game_over:
             return
+
+        key = event.key()
+
         if self.awaiting_start:
             self.awaiting_start = False
             self.timer.start(self.speed)
 
-        key = event.key()
-        if key == Qt.Key_Up and self.direction != QPoint(0, 1):
+        if key == Qt.Key_1:
+            self.difficulty_box.setCurrentIndex(0)
+            return
+        elif key == Qt.Key_2:
+            self.difficulty_box.setCurrentIndex(1)
+            return
+        elif key == Qt.Key_3:
+            self.difficulty_box.setCurrentIndex(2)
+            return
+
+        #Arriba
+        if key in (Qt.Key_Up, Qt.Key_W) and self.direction != QPoint(0, 1):
             self.direction = QPoint(0, -1)
-        elif key == Qt.Key_Down and self.direction != QPoint(0, -1):
+
+    # abajo
+        elif key in (Qt.Key_Down, Qt.Key_S) and self.direction != QPoint(0, -1):
             self.direction = QPoint(0, 1)
-        elif key == Qt.Key_Left and self.direction != QPoint(1, 0):
+
+    # izq
+        elif key in (Qt.Key_Left, Qt.Key_A) and self.direction != QPoint(1, 0):
             self.direction = QPoint(-1, 0)
-        elif key == Qt.Key_Right and self.direction != QPoint(-1, 0):
+
+    # der
+        elif key in (Qt.Key_Right, Qt.Key_D, Qt.Key_D) and self.direction != QPoint(-1, 0):
             self.direction = QPoint(1, 0)
+
+    # pausa
         elif key == Qt.Key_Space:
             self.toggle_pause()
+
 
     def update_game(self):
         if self.game_over or self.paused:
@@ -180,6 +220,8 @@ class SnakeGame(QWidget):
         if head.x() < 0 or head.y() < 0 or head.x() >= cols or head.y() >= rows or head in self.snake:
             self.timer.stop()
             self.game_over = True
+            self.setFocus(Qt.TabFocusReason)
+
             self.update()
 
     

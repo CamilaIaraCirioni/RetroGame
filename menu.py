@@ -2,11 +2,12 @@ from PyQt5.QtWidgets import (
     QWidget, QPushButton, QVBoxLayout, QLabel,
     QSpacerItem, QSizePolicy, QHBoxLayout
 )
-from PyQt5.QtGui import QFont, QPixmap
+from PyQt5.QtGui import QFont, QPixmap, QMovie
 from PyQt5.QtCore import (
     QPropertyAnimation, QEasingCurve, QPoint, Qt, QTimer
 )
 from transitions import transition_flash
+from paths import resource_path
 import sys
 
 
@@ -16,7 +17,7 @@ class GameMenu(QWidget):
         self.stacked_widget = stacked_widget
         self.setStyleSheet("background-color: black;")
         self.animations = []
-
+        self.ruta_fondo = resource_path('assets/fondo.gif')
         self._setup_background()
         self._setup_ui()
 
@@ -24,9 +25,10 @@ class GameMenu(QWidget):
     def _setup_background(self):
         self.bg_label = QLabel(self)
         self.bg_label.setScaledContents(True)
-        self.bg_pixmap = QPixmap("assets/fondo.gif")
-        self.bg_label.setPixmap(self.bg_pixmap)
-        self.bg_label.lower()
+
+        self.bg_movie = QMovie(self.ruta_fondo)
+        self.bg_label.setMovie(self.bg_movie)
+        self.bg_movie.start()
 
     # Interfaz principal
     def _setup_ui(self):

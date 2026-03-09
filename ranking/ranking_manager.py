@@ -1,7 +1,8 @@
 import json, os
 from datetime import datetime
+from paths import data_path
 
-RANKING_FILE = os.path.join(os.path.dirname(__file__), "ranking.json")
+RANKING_FILE = data_path("ranking.json")
 
 def load_data():
     if not os.path.exists(RANKING_FILE):

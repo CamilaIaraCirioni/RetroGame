@@ -6,6 +6,7 @@ from pong.pong_game import PongGame
 from ranking.ranking_screen import RankingScreen
 import sys
 
+
 app = QApplication(sys.argv)
 stack = QStackedWidget()
 
