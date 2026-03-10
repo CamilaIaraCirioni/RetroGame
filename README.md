@@ -13,7 +13,7 @@ Retro is a nostalgic tribute to the golden era of arcade and early console gamin
 
 ## Table of Contents
 
-* [Project Status](#project_status)
+* [Project Status](#project-status)
 * [Features](#features)
 * [Technology Used](#technology-used)
 * [Prerequisites](#prerequisites)
@@ -24,7 +24,7 @@ Retro is a nostalgic tribute to the golden era of arcade and early console gamin
 * [How to Contribute](#How-to-Contribute)
 * [License](#License)
 * [Author](#author)
-* [Thanks](#agradecimientos)
+* [Acknowledgements](#Acknowledgements)
 
 ---
 
@@ -132,7 +132,7 @@ Contributions are welcome! If you want to improve RetroGame, follow these steps:
 1.  Fork this repository.
 2.  Clone your forked copy:
     ```bash
-    git clone [https://github.com/YOUR-USERNAME/](https://github.com/YOUR-USERNAME/)[RetroGame].git
+    git clone https://github.com/YOUR-USERNAME/RetroGame.git
     ```
 3.  Create a new branch for your changes:
     ```bash
@@ -164,4 +164,8 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 
 ---
 
+## Acknowledgements
+
+* **Sarah & Santiago:** For their great support and collaboration in making this project a reality.
+* **PyQt5 Community:** For the amazing documentation and resources.
 
