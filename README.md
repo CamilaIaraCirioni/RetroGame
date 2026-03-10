@@ -121,6 +121,7 @@ python main.py
 * [x] Create a local ranking system with data persistence.
 * [x] Improve UI animations.
 * [ ] Add sound effects and background music.
+* [ ] Implement English localization
 
 ---
 
@@ -162,4 +163,5 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 
 
 ---
+
 
