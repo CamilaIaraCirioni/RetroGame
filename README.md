@@ -105,7 +105,7 @@ python main.py
 
 
 
-![Menu](docs/menu.png)
+![Menu](docs/menu.gif)
 
 ![Ranking](docs/ranking.png)
 
@@ -162,3 +162,4 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 
 
 ---
+
