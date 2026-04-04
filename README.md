@@ -12,7 +12,7 @@ Retro is a nostalgic tribute to the golden era of arcade and early console gamin
 ---
 ## 🎮 Play Now!
 
-[🚀 Download RetroGames v1.0 (.zip)](https://github.com/CamilaIaraCirioni/RetroGame/releases/tag/V1.0.0))
+> ### [🚀 Download RetroGames v1.0 (.zip)](https://github.com/CamilaIaraCirioni/RetroGame/releases/tag/V1.0.0)
  
     1. Download the .zip file.
     
