@@ -10,6 +10,16 @@
 Retro is a nostalgic tribute to the golden era of arcade and early console gaming. This project features a curated collection of classic titles—Snake, Pong, and Minesweeper—all built from the ground up using Python and PyQt5.
 
 ---
+## 🎮 Play Now!
+
+
+> ### [🚀 Download RetroGames v1.0 (.zip)]([tu-link-del-release](https://github.com/CamilaIaraCirioni/RetroGame/releases/tag/V1.0.0))
+ 
+    1. Download the .zip file.
+    
+    2. Extract the folder.
+    
+    3. Run RetroGames.exe.
 
 ## Table of Contents
 
